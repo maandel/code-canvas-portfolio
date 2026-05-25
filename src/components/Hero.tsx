@@ -16,7 +16,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
         >
           <span className="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium border border-border">
-            Available for new opportunities
+            Architecting Scalable Backend Systems
           </span>
         </motion.div>
 
@@ -26,8 +26,8 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none"
         >
-          Building Digital <br />
-          <span className="text-primary italic">Masterpieces</span>
+          Building Robust <br />
+          <span className="text-primary italic">Infrastructures</span>
         </motion.h1>
 
         <motion.p
@@ -36,8 +36,9 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-2xl mx-auto text-xl text-muted-foreground"
         >
-          I'm a Full-Stack Engineer specializing in high-performance web applications,
-          intuitive UI/UX design, and scalable cloud architectures.
+          I'm a Senior Backend Engineer specializing in Distributed Systems, 
+          Clean Architecture, and High-Performance APIs. I build the foundations 
+          that power modern digital masterpieces.
         </motion.p>
 
         <motion.div
@@ -48,7 +49,7 @@ export function Hero() {
         >
           <Button size="lg" className="rounded-full h-14 px-8 text-lg" asChild>
             <a href="#projects">
-              View My Work <ArrowRight className="ml-2 w-5 h-5" />
+              Explore Backend Projects <ArrowRight className="ml-2 w-5 h-5" />
             </a>
           </Button>
           <div className="flex items-center gap-2">

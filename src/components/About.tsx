@@ -16,14 +16,14 @@ export function About() {
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src="https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/profile-pic-01a4430e-1779748577239.webp"
-                alt="Developer Profile"
+                alt="Backend Developer Profile"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
             </div>
             {/* Experience badge */}
             <div className="absolute -bottom-8 -right-8 bg-background border border-border p-6 rounded-2xl shadow-xl hidden lg:block">
               <span className="block text-4xl font-bold text-primary">8+</span>
-              <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">Years of Experience</span>
+              <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">Years in Engineering</span>
             </div>
           </motion.div>
 
@@ -36,17 +36,17 @@ export function About() {
             <h2 className="text-4xl font-bold">About Me</h2>
             <div className="space-y-4 text-lg text-muted-foreground">
               <p>
-                Hello! I'm a passionate Full-Stack Developer based in a world of code and design.
-                I thrive on creating complex systems that are as simple as they are beautiful.
+                Hello! I'm a Senior Backend Developer specializing in the design and implementation of highly scalable,
+                resilient distributed systems.
               </p>
               <p>
-                My journey began with a curiosity for how things work on the web, which evolved
-                into a career building everything from high-traffic SaaS platforms to award-winning
-                interactive experiences.
+                I have a deep passion for architectural patterns like **Clean Architecture**, **DDD**, and **Event Sourcing**.
+                I believe that a robust backend is the backbone of any successful digital product, and I strive to write
+                code that is not only performant but also maintainable and testable.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring the latest AI advancements,
-                contributing to open-source projects, or mentoring aspiring developers.
+                From implementing complex background tasks and distributed caching to orchestrating CI/CD pipelines
+                and cloud-native deployments, I cover the entire spectrum of backend engineering.
               </p>
             </div>
 
@@ -54,8 +54,10 @@ export function About() {
               <Button className="gap-2" size="lg">
                 <Download className="w-5 h-5" /> Download Resume (PDF)
               </Button>
-              <Button variant="outline" className="gap-2" size="lg">
-                <ExternalLink className="w-5 h-5" /> View GitHub
+              <Button variant="outline" className="gap-2" size="lg" asChild>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                   <ExternalLink className="w-5 h-5" /> View My GitHub
+                </a>
               </Button>
             </div>
           </motion.div>

@@ -4,7 +4,7 @@ import { projects } from "@/data/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ArrowLeft, ExternalLink, Globe } from "lucide-react";
+import { ArrowLeft, ExternalLink, Globe, Layers, Server, Zap, Cpu } from "lucide-react";
 
 export function ProjectPage() {
   const { id } = useParams();
@@ -69,7 +69,7 @@ export function ProjectPage() {
             <div className="lg:col-span-2 space-y-12">
               <section>
                 <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">01</span>
+                  <Server className="w-8 h-8 text-primary" />
                   The Challenge
                 </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed italic">
@@ -79,18 +79,34 @@ export function ProjectPage() {
 
               <section>
                 <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">02</span>
-                  The Solution
+                  <Layers className="w-8 h-8 text-primary" />
+                  Architecture & Design
                 </h2>
                 <div className="prose prose-invert max-w-none text-muted-foreground text-lg leading-relaxed">
-                  <p>{project.caseStudy.solution}</p>
+                  <p>{project.caseStudy.architecture}</p>
+                  <p className="mt-4">{project.caseStudy.solution}</p>
                 </div>
               </section>
 
               <section>
                 <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">03</span>
-                  The Outcome
+                  <Zap className="w-8 h-8 text-primary" />
+                  Core Backend Features
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                   {project.caseStudy.backendFeatures.map(feature => (
+                     <div key={feature} className="flex items-center gap-3 p-3 rounded-xl bg-secondary/30 border border-border">
+                        <div className="w-2 h-2 rounded-full bg-primary" />
+                        <span className="text-sm font-medium">{feature}</span>
+                     </div>
+                   ))}
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <Cpu className="w-8 h-8 text-primary" />
+                  Technical Outcome
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {project.caseStudy.outcome}
@@ -104,7 +120,7 @@ export function ProjectPage() {
                 
                 <div className="space-y-6">
                   <div>
-                    <p className="text-sm text-muted-foreground mb-2">Technologies Used</p>
+                    <p className="text-sm text-muted-foreground mb-2">Backend Stack</p>
                     <div className="flex flex-wrap gap-2">
                       {project.caseStudy.techStack.map((tech) => (
                         <span key={tech} className="px-3 py-1 bg-background rounded-full text-sm font-medium border border-border">
@@ -118,10 +134,10 @@ export function ProjectPage() {
 
                   <div className="flex flex-col gap-4">
                     <Button className="w-full h-12 text-lg font-bold gap-2 group">
-                      Live Project <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      API Documentation <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </Button>
                     <Button variant="outline" className="w-full h-12 text-lg font-bold gap-2">
-                      <Globe className="w-5 h-5" /> View Source
+                      <Globe className="w-5 h-5" /> GitHub Repository
                     </Button>
                   </div>
                 </div>

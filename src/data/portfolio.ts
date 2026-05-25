@@ -1,24 +1,46 @@
-import { Code, Globe, Laptop, Layout, LucideIcon, Smartphone, Palette, Shield, Zap } from "lucide-react";
+import { 
+  Code, 
+  Database, 
+  Server, 
+  Cloud, 
+  ShieldCheck, 
+  Zap, 
+  Cpu, 
+  Layers, 
+  LucideIcon, 
+  Terminal,
+  Container,
+  GitBranch,
+  CreditCard,
+  Mail,
+  Search,
+  Lock
+} from "lucide-react";
 
 export interface Project {
   id: string;
   title: string;
-  category: "Web" | "Mobile" | "AI" | "Security";
+  category: "API & Microservices" | "System Design" | "Cloud & DevOps" | "AI & Integration";
   thumbnail: string;
   description: string;
   tags: string[];
   caseStudy: {
     problem: string;
     solution: string;
+    architecture: string;
+    backendFeatures: string[];
     techStack: string[];
     outcome: string;
   };
 }
 
-export interface Skill {
-  name: string;
-  level: number;
-  icon: LucideIcon;
+export interface SkillCategory {
+  title: string;
+  skills: {
+    name: string;
+    level: number;
+    icon: LucideIcon;
+  }[];
 }
 
 export interface Testimonial {
@@ -39,104 +61,156 @@ export interface Award {
 export const projects: Project[] = [
   {
     id: "1",
-    title: "SaaS Analytics Dashboard",
-    category: "Web",
+    title: "Enterprise E-Commerce Core",
+    category: "API & Microservices",
     thumbnail: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/project-saas-dashboard-6e872ae0-1779748577781.webp",
-    description: "A high-performance dashboard for real-time data visualization and business intelligence.",
-    tags: ["React", "TypeScript", "D3.js", "Tailwind"],
+    description: "Highly scalable microservices architecture for a multi-tenant e-commerce platform handling 50k+ RPM.",
+    tags: ["Node.js", "TypeScript", "Redis", "PostgreSQL", "RabbitMQ"],
     caseStudy: {
-      problem: "Client needed a way to visualize millions of data points without sacrificing performance.",
-      solution: "Implemented canvas-based rendering and optimized data fetching with React Query.",
-      techStack: ["React", "TypeScript", "D3.js", "PostgreSQL"],
-      outcome: "Reduced load times by 60% and increased user engagement by 40%."
+      problem: "Legacy monolithic system was failing under peak traffic and lacked modularity for new features.",
+      solution: "Decomposed the monolith into domain-driven microservices with an API Gateway and Event Bus.",
+      architecture: "Clean Architecture with Domain-Driven Design (DDD). Services communicate via gRPC for internal calls and RabbitMQ for async events.",
+      backendFeatures: [
+        "Distributed Caching (Redis)",
+        "Event-Driven Communication",
+        "Payment Gateway Integration (Stripe)",
+        "Background Job Processing (BullMQ)",
+        "Rate Limiting & Circuit Breakers"
+      ],
+      techStack: ["Node.js", "Express", "Prisma", "PostgreSQL", "Redis", "RabbitMQ", "Docker"],
+      outcome: "System uptime increased to 99.99% and checkout processing time reduced by 400ms."
     }
   },
   {
     id: "2",
-    title: "Fintech Mobile Wallet",
-    category: "Mobile",
+    title: "Real-time Fintech Settlement Engine",
+    category: "System Design",
     thumbnail: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/project-fintech-app-fe138710-1779748577517.webp",
-    description: "Secure and intuitive mobile application for managing personal finances and crypto assets.",
-    tags: ["React Native", "Firebase", "Stripe"],
+    description: "Transaction processing engine with high consistency and auditability for cross-border payments.",
+    tags: ["Go", "Kafka", "MongoDB", "Kubernetes"],
     caseStudy: {
-      problem: "Traditional banking apps were too complex for young users.",
-      solution: "Designed a minimalist UI with one-tap transactions and social splitting features.",
-      techStack: ["React Native", "Expo", "Node.js", "Redis"],
-      outcome: "Top 50 in Finance category on App Store within 3 months."
+      problem: "Inconsistent transaction states during network failures leading to financial discrepancies.",
+      solution: "Implemented an Event Sourcing pattern with Saga orchestration to ensure eventual consistency.",
+      architecture: "Layered Architecture with Event Sourcing and CQRS. Orchestration via Temporal.io.",
+      backendFeatures: [
+        "Idempotent API Design",
+        "Transaction Auditing",
+        "Multi-currency support",
+        "Automated Reconciliation",
+        "Unit & Integration Testing (90% coverage)"
+      ],
+      techStack: ["Go", "Kafka", "MongoDB", "Temporal", "Docker", "Kubernetes"],
+      outcome: "Zero financial discrepancies over 12 months of operation; audit time reduced from days to minutes."
     }
   },
   {
     id: "3",
-    title: "Eco-Friendly Furniture Store",
-    category: "Web",
+    title: "Cloud-Native Media Pipeline",
+    category: "Cloud & DevOps",
     thumbnail: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/project-furniture-store-90376fff-1779748576608.webp",
-    description: "Full-stack e-commerce platform with AR product preview and sustainable shipping tracking.",
-    tags: ["Next.js", "Three.js", "Shopify API"],
+    description: "Automated media processing pipeline with on-demand scaling and cloud storage integration.",
+    tags: ["Python", "AWS Lambda", "S3", "Terraform"],
     caseStudy: {
-      problem: "Furniture shopping online suffers from uncertainty about size and fit.",
-      solution: "Integrated WebGL/Three.js for real-time 3D product visualization in users' rooms.",
-      techStack: ["Next.js", "Three.js", "Tailwind", "Sanity CMS"],
-      outcome: "Return rate decreased by 25% due to better visualization."
+      problem: "Manual and slow video transcoding process that couldn't handle variable workloads.",
+      solution: "Built a serverless pipeline that triggers on S3 uploads, utilizing AWS Batch and Lambda.",
+      architecture: "Serverless Microservices. Infrastructure as Code (IaC) via Terraform.",
+      backendFeatures: [
+        "Auto-scaling Media Transcoding",
+        "CDN Invalidation (CloudFront)",
+        "Secure Cloud Storage (S3)",
+        "CI/CD Pipeline (GitHub Actions)",
+        "Media Metadata Extraction"
+      ],
+      techStack: ["Python", "FFmpeg", "AWS Batch", "Lambda", "S3", "Terraform", "GitHub Actions"],
+      outcome: "Reduced media processing costs by 65% while increasing throughput by 10x."
     }
   },
   {
     id: "4",
-    title: "Cyber Threat Monitor",
-    category: "Security",
+    title: "AI-Powered Threat Detection",
+    category: "AI & Integration",
     thumbnail: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/project-cyber-security-4d3b8a07-1779748577210.webp",
-    description: "Enterprise-grade security platform for real-time threat detection and mitigation.",
-    tags: ["Go", "Python", "React", "Docker"],
+    description: "Backend API for real-time security logs analysis using machine learning models.",
+    tags: ["Python", "FastAPI", "Elasticsearch", "PyTorch"],
     caseStudy: {
-      problem: "Security teams overwhelmed by false positives from legacy systems.",
-      solution: "Developed an AI-driven filter that categorizes threats based on severity and pattern analysis.",
-      techStack: ["Go", "Python", "TensorFlow", "React"],
-      outcome: "Reduced response time to critical threats from hours to minutes."
-    }
-  },
-  {
-    id: "5",
-    title: "AI Travel Planner",
-    category: "AI",
-    thumbnail: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/project-travel-ai-140a7a94-1779748576504.webp",
-    description: "Personalized travel itineraries generated by Large Language Models based on user preferences.",
-    tags: ["OpenAI", "Next.js", "Mapbox"],
-    caseStudy: {
-      problem: "Travel planning is time-consuming and generic.",
-      solution: "Used GPT-4 to generate hyper-personalized itineraries with live weather and flight data.",
-      techStack: ["Next.js", "OpenAI API", "Mapbox GL", "tRPC"],
-      outcome: "Over 10,000 itineraries generated in the first month."
+      problem: "Traditional rule-based systems were missing sophisticated zero-day attacks.",
+      solution: "Developed a FastAPI service that streams logs from Elasticsearch into a PyTorch model for anomaly detection.",
+      architecture: "MVC Architecture for the API layer with a decoupled Worker layer for model inference.",
+      backendFeatures: [
+        "Real-time Data Streaming",
+        "AI Model Serving",
+        "Logging & Monitoring (ELK Stack)",
+        "JWT Authentication & RBAC",
+        "Database Index Optimization"
+      ],
+      techStack: ["Python", "FastAPI", "Elasticsearch", "PyTorch", "Celery", "Redis"],
+      outcome: "Identified 30% more legitimate threats than the previous rule-based system."
     }
   }
 ];
 
-export const skills: Skill[] = [
-  { name: "Frontend Architecture", level: 95, icon: Layout },
-  { name: "Full Stack Development", level: 90, icon: Code },
-  { name: "UI/UX Design", level: 85, icon: Palette },
-  { name: "Cloud Infrastructure", level: 80, icon: Zap },
-  { name: "Security Auditing", level: 75, icon: Shield },
-  { name: "Mobile Development", level: 85, icon: Smartphone }
+export const skillCategories: SkillCategory[] = [
+  {
+    title: "Backend Core",
+    skills: [
+      { name: "Node.js / TypeScript", level: 95, icon: Server },
+      { name: "Go (Golang)", level: 85, icon: Terminal },
+      { name: "Python / Django / FastAPI", level: 90, icon: Code },
+      { name: "Clean & Layered Architecture", level: 95, icon: Layers },
+      { name: "API Design (REST, GraphQL, gRPC)", level: 95, icon: Cpu }
+    ]
+  },
+  {
+    title: "Database & Caching",
+    skills: [
+      { name: "PostgreSQL / MySQL", level: 90, icon: Database },
+      { name: "MongoDB / NoSQL", level: 85, icon: Database },
+      { name: "Redis / Memcached", level: 90, icon: Zap },
+      { name: "Elasticsearch", level: 80, icon: Search },
+      { name: "Database Optimization", level: 85, icon: ShieldCheck }
+    ]
+  },
+  {
+    title: "DevOps & Infrastructure",
+    skills: [
+      { name: "Docker & Kubernetes", level: 85, icon: Container },
+      { name: "AWS / GCP / Azure", level: 85, icon: Cloud },
+      { name: "CI/CD (GitHub Actions, Jenkins)", level: 90, icon: GitBranch },
+      { name: "Terraform (IaC)", level: 80, icon: Cloud },
+      { name: "System Monitoring (Prometheus, Grafana)", level: 80, icon: ShieldCheck }
+    ]
+  },
+  {
+    title: "Specialized Services",
+    skills: [
+      { name: "Payment Gateway (Stripe, PayPal)", level: 90, icon: CreditCard },
+      { name: "Email Services (SendGrid, Mailgun)", level: 90, icon: Mail },
+      { name: "Unit & Integration Testing (Jest, PyTest)", level: 95, icon: ShieldCheck },
+      { name: "Cloud Storage (S3, Cloudinary)", level: 90, icon: Database },
+      { name: "AI Integration (OpenAI, LangChain)", level: 85, icon: Cpu }
+    ]
+  }
 ];
 
 export const testimonials: Testimonial[] = [
   {
     id: "1",
     name: "Sarah Johnson",
-    role: "CEO at TechFlow",
-    content: "An absolute professional. The dashboard built for us exceeded all expectations in terms of performance and aesthetics.",
+    role: "CTO at TechFlow",
+    content: "An exceptional backend architect. The settlement engine they built for us has processed millions of transactions without a single discrepancy.",
     avatar: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/testimonial-user-1-b4dca25a-1779748577607.webp"
   },
   {
     id: "2",
     name: "Michael Chen",
-    role: "Product Manager at InnovateX",
-    content: "Rarely do you find a developer who understands both the technical constraints and the user needs so deeply.",
+    role: "Engineering Manager at InnovateX",
+    content: "Their expertise in Clean Architecture and Microservices transformed our legacy mess into a scalable, testable, and maintainable platform.",
     avatar: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/9caa052d-5c2d-4319-9d5b-c4b8bc9b3384/testimonial-user-2-12e8ee97-1779748577703.webp"
   }
 ];
 
 export const awards: Award[] = [
-  { id: "1", title: "Top Developer 2023", issuer: "GitHub Universe", year: "2023" },
-  { id: "2", title: "Excellence in UI Design", issuer: "Awwwards", year: "2022" },
-  { id: "3", title: "Best Open Source Contributor", issuer: "Meta", year: "2021" }
+  { id: "1", title: "Backend Innovation Award", issuer: "CloudNative Foundation", year: "2023" },
+  { id: "2", title: "Open Source Contributor of the Year", issuer: "GitHub Universe", year: "2022" },
+  { id: "3", title: "Certified AWS Solutions Architect", issuer: "Amazon Web Services", year: "2021" }
 ];

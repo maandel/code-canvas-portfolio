@@ -2,7 +2,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Project } from "@/data/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { ExternalLink, Globe } from "lucide-react";
+import { ExternalLink, Globe, Layers, Server, Zap, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ProjectModalProps {
@@ -22,7 +22,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             <div>
               <DialogTitle className="text-3xl font-bold">{project.title}</DialogTitle>
               <DialogDescription className="mt-2 text-lg">
-                {project.category} • {project.tags.join(", ")}
+                {project.category} \u2022 {project.tags.join(", ")}
               </DialogDescription>
             </div>
           </div>
@@ -40,21 +40,33 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="md:col-span-2 space-y-8">
               <div>
-                <h4 className="text-xl font-bold mb-3">The Challenge</h4>
-                <p className="text-muted-foreground leading-relaxed">
-                  {project.caseStudy.problem}
+                <h4 className="text-xl font-bold mb-3 flex items-center gap-2"><Server className="w-5 h-5 text-primary" /> The Challenge</h4>
+                <p className="text-muted-foreground leading-relaxed italic">
+                  "{project.caseStudy.problem}"
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xl font-bold mb-3">The Solution</h4>
+                <h4 className="text-xl font-bold mb-3 flex items-center gap-2"><Layers className="w-5 h-5 text-primary" /> Architecture</h4>
                 <p className="text-muted-foreground leading-relaxed">
-                  {project.caseStudy.solution}
+                  {project.caseStudy.architecture}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xl font-bold mb-3">The Outcome</h4>
+                <h4 className="text-xl font-bold mb-3 flex items-center gap-2"><Zap className="w-5 h-5 text-primary" /> Key Backend Features</h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                   {project.caseStudy.backendFeatures.map(feature => (
+                     <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {feature}
+                     </li>
+                   ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold mb-3 flex items-center gap-2"><Cpu className="w-5 h-5 text-primary" /> Outcome</h4>
                 <p className="text-muted-foreground leading-relaxed">
                   {project.caseStudy.outcome}
                 </p>
@@ -77,10 +89,10 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
               <div className="flex flex-col gap-3">
                 <Button className="w-full gap-2">
-                  <ExternalLink className="w-4 h-4" /> Live Preview
+                  <ExternalLink className="w-4 h-4" /> API Documentation
                 </Button>
                 <Button variant="outline" className="w-full gap-2">
-                  <Globe className="w-4 h-4" /> Source Code
+                  <Globe className="w-4 h-4" /> GitHub Repository
                 </Button>
               </div>
             </div>
